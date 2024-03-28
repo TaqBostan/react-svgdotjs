@@ -1,6 +1,6 @@
 {
   "name": "react-svgdotjs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A lightweight component to use SVG.js library in React. Custom hooks are provided for automatically re-rendering when the underlying data changes.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,7 +32,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taq-bostan/react-svgdotjs.git"
+    "url": "git+https://github.com/TaqBostan/react-svgdotjs.git"
   },
   "files": [
     "dist"
