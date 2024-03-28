@@ -4,6 +4,6 @@
     "clean": true,
     "minify": true,
     "entry": [
-      "src/index.ts"
+      "src/index.ts", "!src/**/*.stories.tsx"
     ]
    }
