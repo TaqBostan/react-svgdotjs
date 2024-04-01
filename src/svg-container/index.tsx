@@ -9,7 +9,8 @@ interface SvgContainerProps {
 }
 
 export type Ref = {
-  svg: Svg
+  svg: Svg,
+  container: HTMLDivElement | null
 } | null;
 
 const SvgContainer = React.forwardRef<Ref, SvgContainerProps>(

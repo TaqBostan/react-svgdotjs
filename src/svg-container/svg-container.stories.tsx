@@ -51,7 +51,6 @@ export const SvgContainerPrimary: FC = () => {
       </div>
 
       <SvgContainer ref={svgContainer} width='500px' height='600px' onload={onload} />
-      {/* <MyComp onload={eee} /> */}
     </div>
   );
 }

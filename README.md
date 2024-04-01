@@ -1,4 +1,4 @@
-A lightweight component to use [SVG.js](https://svgjs.dev/docs/3.1/) library in React. Custom hooks are provided for automatically re-rendering when the underlying data changes.
+A lightweight component to use [SVG.js](https://svgjs.dev/docs/3.1/) library in React. Custom hooks are provided for automatically re-rendering when the underlying data changes. Check out [the CodePen](https://codepen.io/Mohamad-Mehdi-Rajaei/pen/poBdRBO) for some examples.
 
 ## Getting started
 
@@ -33,7 +33,7 @@ const onload = (svg) => {
 
 ## On-demand changes
 
-To add, remove, or change elements in React event handlers, first add `ref` to `SvgContainer` like so:
+To add, remove, or change SVG elements in React event handlers, first add `ref` to `SvgContainer` like so:
 
 ```js
 const svgContainer = React.useRef();
