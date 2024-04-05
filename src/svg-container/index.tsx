@@ -25,18 +25,19 @@ const SvgContainer = React.forwardRef<Ref, SvgContainerProps>(
 
     useEffect(() => {
       if (wrapper && wrapper.current) {
-        if (wrapper.current.children.length === 0)
+        if (wrapper.current.children.length === 0) {
           svg.addTo(wrapper.current).size('100%', '100%');
-        else if (onload) onload(svg);
+          if (onload) onload(svg);
+        }
       }
       return () => { svg.clear(); }
     }, [wrapper, svg]);
 
     const style: CSSProperties = {
     };
-    if(margin) style.margin = margin;
-    if(height) style.height = height;
-    if(width) style.width = width;
+    if (margin) style.margin = margin;
+    if (height) style.height = height;
+    if (width) style.width = width;
 
     return <div ref={wrapper} style={style} />;
   }
