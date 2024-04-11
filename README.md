@@ -8,22 +8,26 @@ Install `react-svgdotjs` using npm.
 npm install react-svgdotjs
 ```
 
-Then you can just import and use like so:
+Then you can just import the component and its hook:
 
 ```js
-import { SvgContainer } from 'react-svgdotjs';
+import { SvgContainer, useSvgContainer } from 'react-svgdotjs';
 ```
 
-`SvgContainer` is rendered as a `div` element with specified width, height, and margin.
+and use it as below:
 
 ```js
-<SvgContainer width='500px' height='600px' margin='0 auto' onload={onload}/>
+const { setHandles, svgContainer } = useSvgContainer();
 ```
 
-In `onload`, you can access the `svg` element inserted into the above container.
+```js
+<SvgContainer setHandles={setHandles} width='500px' height='600px' margin='0 auto' onload={onload}/>
+```
+
+`SvgContainer` is rendered as a `div` element with specified width, height, and margin. In `onload`, you can access the `svg` element inserted into the above container.
 
 ```js
-const onload = (svg) => {
+const onload = (svg, container) => {
     // Set svg dimensions 
     svg.size(500, 600);
     // Add a 100x100 red rectangle
@@ -33,21 +37,7 @@ const onload = (svg) => {
 
 ## On-demand changes
 
-To add, remove, or change SVG elements in React event handlers, first add `ref` to `SvgContainer` like so:
-
-```js
-const svgContainer = React.useRef();
-```
-
-```js
-<SvgContainer ref={svgContainer} ...
-```
-
-Subsequently, you can utilize `svgUpdate` in the following manner:
-
-```js
-import { SvgContainer, svgUpdate } from 'react-svgdotjs';
-```
+To add, remove, or change SVG elements in React event handlers, import and utilize `svgUpdate` hook like so:
 
 ```js
 const clickHandler = svgUpdate(svgContainer, svg => {
@@ -59,20 +49,18 @@ const clickHandler = svgUpdate(svgContainer, svg => {
 <button onClick={clickHandler}>Add a red circle</button>
 ```
 
-Alternatively, you can access `svg` as follows:
+Alternatively, you can access `svg` as below:
 
 ```js
 const clickHandler = () => {
-    let svg = svgContainer.current.svg;
+    let svg = svgContainer.svg;
     svg.circle(10).fill('red').move(130, 130);
 }
 ```
 
 ## Custom hooks
 
-The `onload` behavior prevents SVG from benefiting from seamless re-rendering when the underlying data changes. The custom hooks are provided to address this problem.
-
-To use the custom hooks, ensure to add `ref` to `SvgContainer` (mentioned [earlier](#on-demand-changes)). Then you may utilize these custom hooks one or more times:
+The `onload` behavior prevents SVG from benefiting from seamless re-rendering when the underlying data changes. Some custom hooks are provided to address this problem.
 
 ### useSvg
 
@@ -82,14 +70,14 @@ Consider the `state` provided below:
 const [color, setColor] = React.useState("red");
 ```
 
-Now, you can move the part of your code that contains `state`s from `onload` to `useSvg`:
+Now, you can move the part of your code that contains states from `onload` to `useSvg`:
 
 ```js
-import { SvgContainer, useSvg } from 'react-svgdotjs';
+import { SvgContainer, useSvgContainer, useSvg } from 'react-svgdotjs';
 ```
 
 ```js
-const onload = (svg) => {
+const onload = (svg, container) => {
     // Set svg dimensions 
     svg.size(500, 600);
 }
@@ -107,7 +95,7 @@ Ensure to return an array containing the added elements. Whenever any of the dep
 
 When there is a need for running a function and specifying a cleanup function, you may opt to utilize `useSvgWithCleanup` hook. If no cleanup function is returned, it will proceed to execute `svg.clear()` by default instead.
 ```js
-import { SvgContainer, useSvgWithCleanup } from 'react-svgdotjs';
+import { SvgContainer, useSvgContainer, useSvgWithCleanup } from 'react-svgdotjs';
 ```
 
 ```js

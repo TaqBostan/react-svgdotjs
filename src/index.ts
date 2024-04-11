@@ -1,3 +1,4 @@
-import SvgContainer, { useSvg, useSvgWithCleanup, svgUpdate } from './svg-container';
+import { SvgContainer } from './svg-container';
+import { useSvgContainer, useSvg, useSvgWithCleanup, svgUpdate } from './svg-container/hook';
 import { Svg, Element } from "@svgdotjs/svg.js";
-export { SvgContainer, useSvg, useSvgWithCleanup, svgUpdate, Svg, Element }
+export { SvgContainer, useSvgContainer, useSvg, useSvgWithCleanup, svgUpdate, Svg, Element }
