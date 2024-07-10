@@ -3,6 +3,7 @@
     "sourcemap": true,
     "clean": true,
     "minify": true,
+    "target": "es2022",
     "entry": [
       "src/index.ts", "!src/**/*.stories.tsx"
     ]
