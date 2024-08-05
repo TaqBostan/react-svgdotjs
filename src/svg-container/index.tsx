@@ -4,18 +4,16 @@ import { SvgContainerHandles } from './hook';
 
 const SvgContainer = (props: SvgContainerProps) => {
   const wrapper = useRef<HTMLDivElement>(null);
-  const svg = useMemo(() => SVG(), []);
 
   useEffect(() => {
     if (wrapper && wrapper.current) {
       if (wrapper.current.children.length === 0) {
-        svg.addTo(wrapper.current).size('100%', '100%');
+        let svg = SVG().addTo(wrapper.current).size('100%', '100%');
         props.setHandles({ svg, container: wrapper.current });
         props.onload?.(svg, wrapper.current);
       }
     }
-    return () => { svg.clear(); }
-  }, [wrapper, svg]);
+  }, [wrapper]);
 
   const style: CSSProperties = {
   };
